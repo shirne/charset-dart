@@ -2,6 +2,7 @@ name: charset
 description: A new Flutter package project.
 version: 0.0.1
 homepage:
+repository: https://github.com/shirne/charset-dart
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
