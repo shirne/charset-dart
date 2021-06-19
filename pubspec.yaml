@@ -1,6 +1,6 @@
 name: charset
 description: Multiple charset Encoding and Decoding Library.
-version: 0.2.0
+version: 0.1.0
 homepage:
 repository: https://github.com/shirne/charset-dart
 
