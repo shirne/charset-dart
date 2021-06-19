@@ -150,7 +150,7 @@ class _GbkStreamEncoder {
       } else {
         // unknown GBK code;
         _buffer[targetIndex++] = (replacementCharacterGBK >> 8) & 0xff;
-        ;
+
         _buffer[targetIndex++] = replacementCharacterGBK & 0xff;
       }
       srcIndex++;

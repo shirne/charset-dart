@@ -1,4 +1,5 @@
 # charset
+[![pub package](https://img.shields.io/pub/v/charset.svg)](https://pub.dartlang.org/packages/charset)
 
 gbk,euc-kr,euc-jp,shift-jis,cp437,utf-16 and utf-32 Encoding and Decoding Library for Dart Language
 
@@ -10,11 +11,11 @@ Arrange from <br />
 ## Examples
 
 ```dart
-import 'package:unicode/unicode.dart';
+import 'package:charset/charset.dart';
 
 main() {
   // default
-  print(ut16.decode([254, 255, 78, 10, 85, 132, 130, 229, 108, 52]));
+  print(utf16.decode([254, 255, 78, 10, 85, 132, 130, 229, 108, 52]));
 
   print(utf16.encode("上善若水"));
 

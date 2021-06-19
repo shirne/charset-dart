@@ -262,12 +262,12 @@ const Map<int, int> _utf8ToWide = {
   160: 255,
 };
 
-const cp437 = Cp437(true);
+const cp437 = Cp437Codec(true);
 
-class Cp437 extends Encoding {
+class Cp437Codec extends Encoding {
   final bool _allowInvalid;
 
-  const Cp437([this._allowInvalid = false]) : super();
+  const Cp437Codec([this._allowInvalid = false]) : super();
 
   String get name => "cp437";
 

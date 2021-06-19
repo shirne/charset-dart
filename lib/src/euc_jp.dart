@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'euc_jp_table.dart';
 
-const eucJp = const EucJP();
+const eucJp = const EucJPCodec();
 
 class EucJPDecoder extends Converter<List<int>, String> {
   const EucJPDecoder();
@@ -52,8 +52,8 @@ class EucJPEncoder extends Converter<String, List<int>> {
   }
 }
 
-class EucJP extends Encoding {
-  const EucJP();
+class EucJPCodec extends Encoding {
+  const EucJPCodec();
 
   @override
   Converter<List<int>, String> get decoder => const EucJPDecoder();

@@ -1,12 +1,12 @@
 import 'dart:convert';
 import 'euc_kr_table.dart';
 
-const eucKr = EucKR(true);
+const eucKr = EucKRCodec(true);
 
-class EucKR extends Encoding {
+class EucKRCodec extends Encoding {
   final bool _allowInvalid;
 
-  const EucKR([this._allowInvalid = false]) : super();
+  const EucKRCodec([this._allowInvalid = false]) : super();
 
   String get name => "euc-kr";
 

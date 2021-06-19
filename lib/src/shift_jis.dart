@@ -51,8 +51,8 @@ class ShiftJISEncoder extends Converter<String, List<int>> {
   }
 }
 
-class ShiftJIS extends Encoding {
-  const ShiftJIS();
+class ShiftJISCodec extends Encoding {
+  const ShiftJISCodec();
 
   @override
   Converter<List<int>, String> get decoder => const ShiftJISDecoder();
@@ -64,4 +64,4 @@ class ShiftJIS extends Encoding {
   String get name => 'shift-jis';
 }
 
-const ShiftJIS shiftJis = const ShiftJIS();
+const shiftJis = const ShiftJISCodec();
