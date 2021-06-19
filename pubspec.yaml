@@ -1,16 +1,13 @@
 name: charset
 description: Multiple charset Encoding and Decoding Library.
-version: 0.1.0
+version: 0.1.1
 homepage:
 repository: https://github.com/shirne/charset-dart
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=1.17.0"
 
 dependencies:
-  flutter:
-    sdk: flutter
 
 dev_dependencies:
   flutter_test:
