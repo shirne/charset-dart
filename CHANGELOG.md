@@ -1,3 +1,7 @@
+## 0.1.1
+
+* add Charset to map codecs
+
 ## 0.1.0
 
 * rename codec class add Codec sufix
