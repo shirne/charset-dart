@@ -1,3 +1,7 @@
+## 0.1.2
+
+* add canEncode & canDecode
+  
 ## 0.1.1
 
 * add Charset to map codecs
