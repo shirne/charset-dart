@@ -60,7 +60,8 @@ class Charset {
     }
   }
 
-  static bool canEncode(Encoding encoding, String char) {
+  static bool canEncode(Encoding? encoding, String char) {
+    if (encoding == null) return false;
     try {
       encoding.encode(char);
     } on FormatException catch (_) {
@@ -69,7 +70,8 @@ class Charset {
     return true;
   }
 
-  static bool canDecode(Encoding encoding, List<int> char) {
+  static bool canDecode(Encoding? encoding, List<int> char) {
+    if (encoding == null) return false;
     try {
       encoding.decode(char);
     } on FormatException catch (_) {
