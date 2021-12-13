@@ -1,12 +1,13 @@
 # charset
 [![pub package](https://img.shields.io/pub/v/charset.svg)](https://pub.dartlang.org/packages/charset)
 
-gbk,euc-kr,euc-jp,shift-jis,cp437,utf-16 and utf-32 Encoding and Decoding Library for Dart Language
+cp series,win series,iso series,gbk,euc-kr,euc-jp,shift-jis,cp437,utf-16 and utf-32 Encoding and Decoding Library for Dart Language
 
 Arrange from <br />
 [utf](https://github.com/dart-archive/utf)<br />
 [fast_gbk](https://github.com/lixiangthinker/fast_gbk)<br />
 [euc](https://github.com/dsh0416/euc-jp)
+[convert](https://github.com/dart-lang/convert)
 
 ## Examples
 

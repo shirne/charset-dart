@@ -1,3 +1,7 @@
+## 0.2.0
+
+* add iso series & cp series & win series
+
 ## 0.1.2
 
 * add canEncode & canDecode
