@@ -59,4 +59,22 @@ class Charset {
       }
     }
   }
+
+  static bool canEncode(Encoding encoding, String char) {
+    try {
+      encoding.encode(char);
+    } on FormatException catch (_) {
+      return false;
+    }
+    return true;
+  }
+
+  static bool canDecode(Encoding encoding, List<int> char) {
+    try {
+      encoding.decode(char);
+    } on FormatException catch (_) {
+      return false;
+    }
+    return true;
+  }
 }
