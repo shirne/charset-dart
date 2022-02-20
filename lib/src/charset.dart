@@ -359,6 +359,8 @@ class Charset {
       encoding.encode(char);
     } on FormatException catch (_) {
       return false;
+    } on ArgumentError catch (_) {
+      return false;
     }
     return true;
   }
@@ -368,6 +370,8 @@ class Charset {
     try {
       encoding.decode(char);
     } on FormatException catch (_) {
+      return false;
+    } on ArgumentError catch (_) {
       return false;
     }
     return true;
