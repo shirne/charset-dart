@@ -3,6 +3,7 @@ description: Multiple charset Encoding and Decoding Library.
 version: 0.2.1
 homepage:
 repository: https://github.com/shirne/charset-dart
+publish_to: https://pub.dartlang.org
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
