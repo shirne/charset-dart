@@ -1,3 +1,7 @@
+## 0.2.1
+
+* improve code names
+
 ## 0.2.0
 
 * add iso series & cp series & win series

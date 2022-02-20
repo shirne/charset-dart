@@ -10,11 +10,104 @@ import 'utf/utf32.dart';
 
 class Charset {
   static final _charCodeMap = <String, Encoding>{
+    'iso-ir-101': latin2,
+    'iso_8859-2': latin2,
+    'iso-8859-2': latin2,
+    'latin2': latin2,
+    'l2': latin2,
+    'csisolatin2': latin2,
+
+    'iso-ir-109': latin3,
+    'iso_8859-3': latin3,
+    'iso-8859-3': latin3,
+    'latin3': latin3,
+    'l3': latin3,
+    'csisolatin3': latin3,
+
+    'iso-ir-110': latin4,
+    'iso_8859-4': latin4,
+    'iso-8859-4': latin4,
+    'latin4': latin4,
+    'l4': latin4,
+    'csisolatin4': latin4,
+
+    'iso-ir-144': latinCyrillic,
+    'iso_8859-5': latinCyrillic,
+    'iso-8859-5': latinCyrillic,
+    'cyrillic': latinCyrillic,
+    'csisolatincyrillic': latinCyrillic,
+
+    'iso-ir-127': latinArabic,
+    'iso_8859-6': latinArabic,
+    'iso-8859-6': latinArabic,
+    'ecma-114': latinArabic,
+    'asmo-708': latinArabic,
+    'arabic': latinArabic,
+    'csisolatinarabic': latinArabic,
+
+    'iso-ir-126': latinGreek,
+    'iso_8859-7': latinGreek,
+    'iso-8859-7': latinGreek,
+    'elot_928': latinGreek,
+    'ecma-118': latinGreek,
+    'greek': latinGreek,
+    'greek8': latinGreek,
+    'csisolatingreek': latinGreek,
+
+    'iso-ir-138': latinHebrew,
+    'iso_8859-8': latinHebrew,
+    'iso-8859-8': latinHebrew,
+    'hebrew': latinHebrew,
+    'csisolatinhebrew': latinHebrew,
+
+    'iso-ir-148': latin5,
+    'iso_8859-9': latin5,
+    'iso-8859-9': latin5,
+    'latin5': latin5,
+    'l5': latin5,
+    'csisolatin5': latin5,
+
+    'iso-ir-157': latin6,
+    'l6': latin6,
+    'iso_8859-10:1992': latin6,
+    'csisolatin6': latin6,
+    'latin6': latin6,
+
+    'tis-620': latinThai,
+    'cstis620': latinThai,
+    'iso-8859-11': latinThai,
+
+    'iso-8859-13': latin7,
+    'csiso885913': latin7,
+
+    'iso-8859-14': latin8,
+    'iso-ir-199': latin8,
+    'iso_8859-14:1998': latin8,
+    'iso_8859-14': latin8,
+    'latin8': latin8,
+    'iso-celtic': latin8,
+    'l8': latin8,
+    'csiso885914': latin8,
+
+    'iso-8859-15': latin9,
+    'iso_8859-15': latin9,
+    'latin-9': latin9,
+    'csiso885915': latin9,
+
+    'iso-8859-16': latin10,
+    'iso-ir-226': latin10,
+    'iso_8859-16:2001': latin10,
+    'iso_8859-16': latin10,
+    'latin10': latin10,
+    'l10': latin10,
+    'csiso885916': latin10,
+
     // cp437
     '437': cp437,
     'cp437': cp437,
     'ibm437': cp437,
     'csibm437': cp437,
+    'cspc8codepage437': cp437,
 
     '737': cp737,
     'cp737': cp737,
@@ -195,31 +288,55 @@ class Charset {
     'euc-jp': eucJp,
     'eucjp': eucJp,
     'euc_jp': eucJp,
+    'cseucpkdfmtjapanese': eucJp,
 
     'euc-kr': eucKr,
     'euckr': eucKr,
     'euc_kr': eucKr,
+    'cseuckr': eucKr,
 
     'gbk': gbk,
     'gb2312': gbk,
     'gb-2312': gbk,
     'gb_2312': gbk,
+    'cp936': gbk,
+    'ms936': gbk,
+    'windows-936': gbk,
+    'csgbk': gbk,
+
+    'gb18030': gbk,
+    'csgb18030': gbk,
 
     'shift-jis': shiftJis,
     'shiftjis': shiftJis,
     'shift_jis': shiftJis,
+    'ms_kanji': shiftJis,
+    'csshiftjis': shiftJis,
 
     'utf-16': utf16,
     'utf16': utf16,
     'utf_16': utf16,
+    'csutf16': utf16,
+    'csutf16be': utf16,
+    'csutf16le': utf16,
+    'utf-16be': utf16,
+    'utf-16le': utf16,
 
     'utf-32': utf32,
     'utf32': utf32,
-    'utf_32': utf32
+    'utf_32': utf32,
+    'csutf32': utf32,
+    'csutf32be': utf32,
+    'utf-32be': utf32,
+    'csutf32le': utf32,
+    'utf-32le': utf32
   };
   Charset._();
   static Encoding? detect(List<int> bytes,
-      [Encoding? defaultEncoding, List<Encoding>? orders]) {}
+      [Encoding? defaultEncoding, List<Encoding>? orders]) {
+    //TODO implemention
+    return null;
+  }
 
   static Encoding? getByName(String codeName, [Encoding? defaultEncoding]) {
     return _charCodeMap[codeName.toLowerCase()] ??
