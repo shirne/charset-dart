@@ -1,3 +1,7 @@
+## 0.2.2
+
+* fix canEncode & canDecode
+
 ## 0.2.1
 
 * improve code names
