@@ -69,6 +69,8 @@ class Charset {
 
     'iso-ir-157': latin6,
     'l6': latin6,
+    'iso-8859-10': latin6,
+    'iso_8859-10': latin6,
     'iso_8859-10:1992': latin6,
     'csisolatin6': latin6,
     'latin6': latin6,
@@ -238,51 +240,69 @@ class Charset {
     'cp874': windows874,
     'win874': windows874,
     'windows874': windows874,
+    'windows-874': windows874,
+    'cswindows874': windows874,
 
     '1250': windows1250,
     'cp1250': windows1250,
     'win1250': windows1250,
     'windows1250': windows1250,
+    'windows-1250': windows1250,
+    'cswindows1250': windows1250,
 
     '1251': windows1251,
     'cp1251': windows1251,
     'win1251': windows1251,
     'windows1251': windows1251,
+    'windows-1251': windows1251,
+    'cswindows1251': windows1251,
 
     '1252': windows1252,
     'cp1252': windows1252,
     'win1252': windows1252,
     'windows1252': windows1252,
+    'windows-1252': windows1252,
+    'cswindows1252': windows1252,
 
     '1253': windows1253,
     'cp1253': windows1253,
     'win1253': windows1253,
     'windows1253': windows1253,
+    'windows-1253': windows1253,
+    'cswindows1253': windows1253,
 
     '1254': windows1254,
     'cp1254': windows1254,
     'win1254': windows1254,
     'windows1254': windows1254,
+    'windows-1254': windows1254,
+    'cswindows1254': windows1254,
 
     '1255': windows1255,
     'cp1255': windows1255,
     'win1255': windows1255,
     'windows1255': windows1255,
+    'windows-1255': windows1255,
+    'cswindows1255': windows1255,
 
     '1256': windows1256,
     'cp1256': windows1256,
     'win1256': windows1256,
     'windows1256': windows1256,
+    'windows-1256': windows1256,
+    'cswindows1256': windows1256,
 
     '1257': windows1257,
     'cp1257': windows1257,
     'win1257': windows1257,
     'windows1257': windows1257,
+    'windows-1257': windows1257,
 
     '1258': windows1258,
     'cp1258': windows1258,
     'win1258': windows1258,
     'windows1258': windows1258,
+    'windows-1258': windows1258,
 
     // euc-jp
     'euc-jp': eucJp,
@@ -356,7 +376,12 @@ class Charset {
   static bool canEncode(Encoding? encoding, String char) {
     if (encoding == null) return false;
     try {
-      encoding.encode(char);
+      List<int> result = encoding.encode(char);
+      if (encoding is CodePage) {
+        if (result.length != char.length) {
+          return false;
+        }
+      }
     } on FormatException catch (_) {
       return false;
     } on ArgumentError catch (_) {
@@ -368,7 +393,12 @@ class Charset {
   static bool canDecode(Encoding? encoding, List<int> char) {
     if (encoding == null) return false;
     try {
-      encoding.decode(char);
+      String result = encoding.decode(char);
+      if (encoding is CodePage) {
+        if (result.contains('\uFFFD')) {
+          return false;
+        }
+      }
     } on FormatException catch (_) {
       return false;
     } on ArgumentError catch (_) {
