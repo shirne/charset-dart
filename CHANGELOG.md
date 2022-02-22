@@ -1,3 +1,7 @@
+## 0.2.3
+
+* fix names
+
 ## 0.2.2
 
 * fix canEncode & canDecode
