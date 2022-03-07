@@ -1,3 +1,7 @@
+## 0.2.4
+
+* fix canEncode for shift-jis invalid codec
+
 ## 0.2.3
 
 * fix names
