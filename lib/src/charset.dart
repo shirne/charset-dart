@@ -381,6 +381,10 @@ class Charset {
         if (result.length != char.length) {
           return false;
         }
+      } else if (!encoding.name.contains('utf')) {
+        if (result.contains(0xFFFD)) {
+          return false;
+        }
       }
     } on FormatException catch (_) {
       return false;
@@ -395,6 +399,11 @@ class Charset {
     try {
       String result = encoding.decode(char);
       if (encoding is CodePage) {
+        if (result.contains('\uFFFD')) {
+          return false;
+        }
+      } else if (!encoding.name.contains('utf')) {
+        // TODO
         if (result.contains('\uFFFD')) {
           return false;
         }
