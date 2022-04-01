@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 const JIS_TABLE = {
   0x00: [0],
   0x01: [1],

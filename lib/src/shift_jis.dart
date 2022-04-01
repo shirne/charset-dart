@@ -43,10 +43,10 @@ class ShiftJISEncoder extends Converter<String, List<int>> {
   const ShiftJISEncoder();
 
   @override
-  List<int> convert(String s) {
+  List<int> convert(String input) {
     List<int> result = [];
-    for (int i = 0; i < s.length; i++) {
-      var bytes = utf8.encode(s[i]);
+    for (int i = 0; i < input.length; i++) {
+      var bytes = utf8.encode(input[i]);
       var value = 0;
 
       for (var i = 0, length = bytes.length; i < length; i++) {
@@ -76,4 +76,4 @@ class ShiftJISCodec extends Encoding {
   String get name => 'shift-jis';
 }
 
-const shiftJis = const ShiftJISCodec();
+const shiftJis = ShiftJISCodec();

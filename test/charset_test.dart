@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
 import 'package:charset/charset.dart';
@@ -10,6 +12,11 @@ void main() {
 
     expect(
         utf16.encode("上善若水"), [254, 255, 78, 10, 85, 132, 130, 229, 108, 52]);
+  });
+
+  test('controls', () {
+    String textl = "0x0atdaa\t\rRsad";
+    expect(latin1.encode(textl), latin2.encode(textl));
   });
 
   test('test encode', () {

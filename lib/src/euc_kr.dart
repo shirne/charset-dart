@@ -8,10 +8,13 @@ class EucKRCodec extends Encoding {
 
   const EucKRCodec([this._allowInvalid = false]) : super();
 
+  @override
   String get name => "euc-kr";
 
+  @override
   EucKREncoder get encoder => const EucKREncoder();
 
+  @override
   EucKRDecoder get decoder =>
       _allowInvalid ? const EucKRDecoder(true) : const EucKRDecoder();
 }
@@ -22,7 +25,7 @@ class EucKREncoder extends Converter<String, List<int>> {
   @override
   List<int> convert(String input) {
     List<int> bits = [];
-    input.codeUnits.forEach((i) {
+    for (var i in input.codeUnits) {
       if (i < 0x80) {
         bits.add(i);
       } else {
@@ -34,7 +37,7 @@ class EucKREncoder extends Converter<String, List<int>> {
           bits.add(code & 0xff);
         }
       }
-    });
+    }
     return bits;
   }
 }

@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'dart:math';
 import 'euc_jp_table.dart';
 
-const eucJp = const EucJPCodec();
+const eucJp = EucJPCodec();
 
 class EucJPDecoder extends Converter<List<int>, String> {
   const EucJPDecoder();
@@ -36,10 +36,10 @@ class EucJPDecoder extends Converter<List<int>, String> {
 class EucJPEncoder extends Converter<String, List<int>> {
   const EucJPEncoder();
   @override
-  List<int> convert(String s) {
+  List<int> convert(String input) {
     List<int> result = [];
-    for (int i = 0; i < s.length; i++) {
-      var bytes = utf8.encode(s[i]);
+    for (int i = 0; i < input.length; i++) {
+      var bytes = utf8.encode(input[i]);
       var value = 0;
 
       for (var i = 0, length = bytes.length; i < length; i++) {

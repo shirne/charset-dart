@@ -1,3 +1,7 @@
+## 1.0.0
+
+* CodePage with controls #1
+
 ## 0.2.4
 
 * fix canEncode for shift-jis invalid codec

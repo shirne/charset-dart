@@ -117,7 +117,7 @@ class Utf16Decoder extends Converter<List<int>, String> {
   }
 }
 
-const Utf16Codec utf16 = const Utf16Codec();
+const Utf16Codec utf16 = Utf16Codec();
 
 /// Identifies whether a List of bytes starts (based on offset) with a
 /// byte-order marker (BOM).

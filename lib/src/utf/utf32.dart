@@ -117,7 +117,7 @@ class Utf32Decoder extends Converter<List<int>, String> {
           .whereType<int>());
 }
 
-const Utf32Codec utf32 = const Utf32Codec();
+const Utf32Codec utf32 = Utf32Codec();
 
 /// Identifies whether a List of bytes starts (based on offset) with a
 /// byte-order marker (BOM).

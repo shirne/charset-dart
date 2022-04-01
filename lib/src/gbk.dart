@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names, duplicate_ignore
+
 import 'dart:convert';
 import 'dart:typed_data';
 import 'gbk_encoder_map.dart';
