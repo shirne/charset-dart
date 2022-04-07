@@ -35,7 +35,7 @@ class ShiftJISDecoder extends Converter<List<int>, String> {
         throw FormatException('Unfinished Shift-JIS octet sequence', input, i);
       }
     }
-    return utf8.decode(result);
+    return utf8.decode(result, allowMalformed: _allowMalformed);
   }
 }
 
