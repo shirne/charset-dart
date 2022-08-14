@@ -1,6 +1,10 @@
+## 1.0.2
+
+* improve code map
+
 ## 1.0.1
 
-* #2
+* #2 fix _allowMalformed
 
 ## 1.0.0
 
