@@ -32,4 +32,5 @@ main() {
 
 ## Notice
 
+In 0.x versions CodePage series Does not containts control characters (0x00-0x31).
 0.x 版本中CodePage不含控制字符 (0x00-0x31)
