@@ -1,20 +1,4 @@
 import 'dart:convert';
-import 'cp949_table.dart';
-
-const cp949 = Cp949Codec(true);
-
-class Cp949Codec extends MappedPageCodec {
-  const Cp949Codec([bool allowInvalid = false])
-      : super(
-          const MappedPageEncoder(utf8ToCp949),
-          allowInvalid
-              ? const MappedPageDecoder(cp949ToUtf8, true)
-              : const MappedPageDecoder(cp949ToUtf8),
-        );
-
-  @override
-  String get name => "cp949";
-}
 
 abstract class MappedPageCodec extends Encoding {
   final MappedPageEncoder _encoder;
