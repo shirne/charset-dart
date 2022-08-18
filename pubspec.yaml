@@ -1,5 +1,5 @@
 name: charset
-description: Multiple charset Encoding and Decoding Library.
+description: Charset encoding and decoding Library, include iso-(2-15), windows series, gbk, euc-jp, euc-kr, shift-jis. And supportted charset detect, canEncode, canDecode.
 version: 1.1.0
 homepage:
 repository: https://github.com/shirne/charset-dart
