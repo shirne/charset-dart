@@ -55,9 +55,13 @@ class EucKRDecoder extends Converter<List<int>, String> {
       if (leadPointer != 0) {
         if (pointer >= 0x41 && pointer <= 0xfe) {
           //int code = (leadPointer - 0x81) * 190 + (pointer - 0x41);
-          int code = leadPointer << 8 + pointer;
-
-          sb.writeCharCode(code < 0x80 ? code : (eucKrToUtf8[code] ?? 0));
+          int code = (leadPointer << 8) + pointer;
+          final charCode = code < 0x80 ? code : eucKrToUtf8[code];
+          if (charCode == null && !_allowInvalid) {
+            throw FormatException('Unfinished Euc-KR octet sequence', input, i);
+          } else {
+            sb.writeCharCode(charCode ?? unicodeReplacementCharacterRune);
+          }
         }
         leadPointer = 0;
       } else if (pointer < 0x80) {
@@ -65,11 +69,20 @@ class EucKRDecoder extends Converter<List<int>, String> {
       } else if (pointer >= 0x81 && pointer <= 0xfe) {
         leadPointer = pointer;
       } else {
-        if (!_allowInvalid) throw Exception('');
+        if (!_allowInvalid) {
+          throw FormatException('Unfinished Euc-KR octet sequence', input, i);
+        }
+        sb.writeCharCode(unicodeReplacementCharacterRune);
       }
     }
     if (leadPointer != 0) {
-      if (!_allowInvalid) throw Exception('');
+      if (!_allowInvalid) {
+        throw FormatException(
+          'Unfinished Euc-KR octet sequence',
+          input,
+          leadPointer,
+        );
+      }
     }
     return sb.toString();
   }

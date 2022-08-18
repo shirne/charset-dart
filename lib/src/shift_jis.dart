@@ -30,7 +30,7 @@ class ShiftJISDecoder extends Converter<List<int>, String> {
       if (c2 != null) {
         result.addAll(c2);
       } else if (_allowMalformed) {
-        result.addAll([0xFFFD]);
+        result.add(unicodeReplacementCharacterRune);
       } else {
         throw FormatException('Unfinished Shift-JIS octet sequence', input, i);
       }

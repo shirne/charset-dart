@@ -5,28 +5,38 @@ import 'euc_jp_table.dart';
 const eucJp = EucJPCodec();
 
 class EucJPDecoder extends Converter<List<int>, String> {
-  const EucJPDecoder();
+  final bool _allowMalformed;
+  const EucJPDecoder([this._allowMalformed = false]);
   @override
   convert(input) {
     List<int> result = [];
     for (int i = 0; i < input.length; i++) {
-      var c1 = input[i];
+      final c1 = input[i];
+      final List<int>? codes;
       if (c1 <= 0x7E) {
         // ASCII Compatible
-        result.addAll(EUC_TABLE[c1] ?? []);
+        codes = EUC_TABLE[c1];
       } else if (c1 == 0x8e) {
         // Hiragana
-        var c2 = input[++i];
-        result.addAll(EUC_TABLE[(c1 << 8) + c2] ?? []);
+        final c2 = input[++i];
+        codes = EUC_TABLE[(c1 << 8) + c2];
       } else if (c1 == 0x8f) {
         // JIS X 0212
-        var c2 = input[++i];
-        var c3 = input[++i];
-        result.addAll(EUC_TABLE[(c1 << 16) + (c2 << 8) + c3] ?? []);
+        final c2 = input[++i];
+        final c3 = input[++i];
+        codes = EUC_TABLE[(c1 << 16) + (c2 << 8) + c3];
       } else {
         // JIS X 0208
-        var c2 = input[++i];
-        result.addAll(EUC_TABLE[(c1 << 8) + c2] ?? []);
+        final c2 = input[++i];
+        codes = EUC_TABLE[(c1 << 8) + c2];
+      }
+      if (codes == null) {
+        if (_allowMalformed) {
+          throw FormatException('Unfinished Euc-JP octet sequence', input, i);
+        }
+        result.add(unicodeReplacementCharacterRune);
+      } else {
+        result.addAll(codes);
       }
     }
     return utf8.decode(result);
@@ -53,10 +63,12 @@ class EucJPEncoder extends Converter<String, List<int>> {
 }
 
 class EucJPCodec extends Encoding {
-  const EucJPCodec();
+  final bool _allowMalformed;
+  const EucJPCodec([this._allowMalformed = false]);
 
   @override
-  Converter<List<int>, String> get decoder => const EucJPDecoder();
+  Converter<List<int>, String> get decoder =>
+      _allowMalformed ? const EucJPDecoder(true) : const EucJPDecoder();
 
   @override
   Converter<String, List<int>> get encoder => const EucJPEncoder();
