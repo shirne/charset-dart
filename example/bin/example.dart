@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:charset/charset.dart';
-import 'package:example/example.dart' as example;
 
 void main(List<String> arguments) {
   // default

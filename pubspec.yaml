@@ -1,6 +1,6 @@
 name: charset
 description: Charset encoding and decoding Library, include iso-(2-15), windows series, gbk, euc-jp, euc-kr, shift-jis. And supportted charset detect, canEncode, canDecode.
-version: 1.1.0
+version: 1.1.1
 homepage:
 repository: https://github.com/shirne/charset-dart
 
@@ -11,7 +11,7 @@ dependencies:
 
 dev_dependencies:
   test:
-  flutter_lints: ^1.0.0
+  lints: ^2.0.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

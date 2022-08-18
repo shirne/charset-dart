@@ -1,3 +1,7 @@
+## 1.1.1
+
+* example & readme
+
 ## 1.1.0
 
 * fix eucKr to support invalid code

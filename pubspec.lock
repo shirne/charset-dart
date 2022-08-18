@@ -85,13 +85,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "6.1.2"
-  flutter_lints:
-    dependency: "direct dev"
-    description:
-      name: flutter_lints
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.4"
   frontend_server_client:
     dependency: transitive
     description:
@@ -135,12 +128,12 @@ packages:
     source: hosted
     version: "0.6.3"
   lints:
-    dependency: transitive
+    dependency: "direct dev"
     description:
       name: lints
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.1"
+    version: "2.0.0"
   logging:
     dependency: transitive
     description:
@@ -352,4 +345,4 @@ packages:
     source: hosted
     version: "3.1.0"
 sdks:
-  dart: ">=2.12.0 <3.0.0"
+  dart: ">=2.17.0-206.0.dev <3.0.0"

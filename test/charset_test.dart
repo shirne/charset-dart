@@ -90,11 +90,7 @@ void main() {
       bool canEncode = false;
       for (Encoding encoder in neededEncoders) {
         if (Charset.canEncode(encoder, char)) {
-          print(encoder.name +
-              " " +
-              code.toString() +
-              " " +
-              encoder.encode(char).join(","));
+          print("${encoder.name} $code ${encoder.encode(char).join(",")}");
           canEncode = true;
           break;
         }
@@ -102,19 +98,14 @@ void main() {
       if (!canEncode) {
         for (Encoding encoder in encoders) {
           if (Charset.canEncode(encoder, char)) {
-            print("+" +
-                encoder.name +
-                " " +
-                code.toString() +
-                " " +
-                encoder.encode(char).join(","));
+            print("+${encoder.name} $code ${encoder.encode(char).join(",")}");
             canEncode = true;
             break;
           }
         }
       }
       if (!canEncode) {
-        print("+ utf " + code.toString());
+        print("+ utf $code");
       }
     }
   });
