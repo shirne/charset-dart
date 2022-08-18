@@ -1,3 +1,8 @@
+## 1.1.0
+
+* fix eucKr to support invalid code
+* Implement Encoding detect
+
 ## 1.0.1
 
 * #2

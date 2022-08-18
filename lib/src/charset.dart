@@ -8,7 +8,9 @@ import 'shift_jis.dart';
 import 'utf/utf16.dart';
 import 'utf/utf32.dart';
 
+/// Global method for Encoders
 class Charset {
+  /// Encoding map
   static final _charCodeMap = <String, Encoding>{
     'iso-ir-101': latin2,
     'iso_8859-2': latin2,
@@ -400,19 +402,74 @@ class Charset {
     'csutf32le': utf32,
     'utf-32le': utf32
   };
+
+  /// Default detect list
+  static final defaultDetectOrder = <Encoding>[
+    ascii,
+    // eucJp,
+    // shiftJis,
+    // eucKr,
+    gbk,
+    // windows874,
+    // latin1,
+    // latin2,
+    // latin3,
+    // latin4,
+    // latinCyrillic,
+    // latinArabic,
+    // latinGreek,
+    // latinHebrew,
+    // latin5,
+    // latin6,
+    // latinThai,
+    // latin7,
+    // latin8,
+    // latin9,
+    // latin10,
+  ];
+
   Charset._();
-  static Encoding? detect(List<int> bytes,
-      [Encoding? defaultEncoding, List<Encoding>? orders]) {
-    //TODO implemention
-    return null;
+
+  /// Detect encoding of bytedata
+  static Encoding? detect(
+    List<int> bytes, {
+
+    /// falback encoding
+    Encoding? defaultEncoding,
+
+    /// detect list
+    List<Encoding>? orders,
+
+    /// return utf8 when has U+FEFF BOM, either return utf16
+    bool utf8BOM = true,
+  }) {
+    if (hasUtf16BeBom(bytes)) {
+      return utf8BOM ? utf8 : utf16;
+    }
+    if (hasUtf16LeBom(bytes)) {
+      return utf16;
+    }
+    if (hasUtf32beBom(bytes)) {
+      return utf32;
+    }
+
+    for (Encoding encoding in (orders ?? defaultDetectOrder)) {
+      if (canDecode(encoding, bytes)) {
+        return encoding;
+      }
+    }
+
+    return defaultEncoding;
   }
 
+  /// Get Encoding by name
   static Encoding? getByName(String codeName, [Encoding? defaultEncoding]) {
     return _charCodeMap[codeName.toLowerCase()] ??
         Encoding.getByName(codeName) ??
         defaultEncoding;
   }
 
+  /// Register a name and Encoding pair to map
   static void register(Encoding encoding, String name, [List<String>? alias]) {
     _charCodeMap[name.toLowerCase()] = encoding;
     if (alias != null) {
@@ -422,6 +479,7 @@ class Charset {
     }
   }
 
+  /// Whether `encoding` can encode the string
   static bool canEncode(Encoding? encoding, String char) {
     if (encoding == null) return false;
     try {
@@ -443,6 +501,7 @@ class Charset {
     return true;
   }
 
+  /// Whether `encoding` can decode the bytedata
   static bool canDecode(Encoding? encoding, List<int> char) {
     if (encoding == null) return false;
     try {
