@@ -1,3 +1,6 @@
+## 1.2.0
+* update dart version for 3.0
+
 ## 1.1.1
 
 * example & readme

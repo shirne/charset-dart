@@ -433,7 +433,6 @@ class Charset {
   /// Detect encoding of bytedata
   static Encoding? detect(
     List<int> bytes, {
-
     /// falback encoding
     Encoding? defaultEncoding,
 
@@ -511,7 +510,7 @@ class Charset {
           return false;
         }
       } else if (!encoding.name.contains('utf')) {
-        // TODO
+        // TODO(shirne): A better way to judge a invalid character
         if (result.contains('\uFFFD')) {
           return false;
         }

@@ -104,10 +104,6 @@ class GbkEncoder extends Converter<String, List<int>> {
         (sink is ByteConversionSink) ? sink : ByteConversionSink.from(sink),
         _GbkStreamEncoder());
   }
-
-  // Override the base-classes bind, to provide a better type.
-  @override
-  Stream<List<int>> bind(Stream<String> stream) => super.bind(stream);
 }
 
 /// This class encodes Strings to UTF-8 code units (unsigned 8 bit integers).
@@ -246,12 +242,6 @@ class GbkDecoder extends Converter<List<int>, String> {
     }
 
     return _GbkConversionSink(stringSink, _allowMalformed);
-  }
-
-  // Override the base-classes bind, to provide a better type.
-  @override
-  Stream<String> bind(Stream<List<int>> stream) {
-    return super.bind(stream);
   }
 }
 
