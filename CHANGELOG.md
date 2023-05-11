@@ -1,3 +1,7 @@
+## 2.0.0
+* improve utf codec methods to unnullable
+* improve docs
+
 ## 1.2.0
 * update dart version for 3.0
 
