@@ -5,12 +5,12 @@ import 'dart:collection';
 /// iterating over it. The results of doing so are undefined.
 // TODO(floitsch): Consider removing the extend and switch to implements since
 // that's cheaper to allocate.
-class ListRange extends IterableBase<int?> {
-  final List<int?> _source;
+class ListRange extends IterableBase<int> {
+  final Iterable<int> _source;
   final int _offset;
   final int _length;
 
-  ListRange(List<int?> source, [int offset = 0, int? length])
+  ListRange(Iterable<int> source, [int offset = 0, int? length])
       : _source = source,
         _offset = offset,
         _length = (length ?? source.length - offset) {
@@ -26,8 +26,11 @@ class ListRange extends IterableBase<int?> {
   }
 
   @override
-  ListRangeIterator get iterator =>
-      _ListRangeIteratorImpl(_source, _offset, _offset + _length);
+  ListRangeIterator get iterator => _ListRangeIteratorImpl(
+        _source is List ? _source as List<int> : _source.toList(),
+        _offset,
+        _offset + _length,
+      );
 
   @override
   int get length => _length;
@@ -36,19 +39,19 @@ class ListRange extends IterableBase<int?> {
 /// The ListRangeIterator provides more capabilities than a standard iterator,
 /// including the ability to get the current position, count remaining items,
 /// and move forward/backward within the iterator.
-abstract class ListRangeIterator implements Iterator<int?> {
+abstract class ListRangeIterator implements Iterator<int> {
   @override
   bool moveNext();
   @override
-  int? get current;
+  int get current;
   int get position;
-  void backup([int? by]);
+  void backup([int by]);
   int get remaining;
-  void skip([int? count]);
+  void skip([int count]);
 }
 
 class _ListRangeIteratorImpl implements ListRangeIterator {
-  final List<int?> _source;
+  final List<int> _source;
   int _offset;
   final int _end;
 
@@ -56,7 +59,7 @@ class _ListRangeIteratorImpl implements ListRangeIterator {
       : _offset = offset - 1;
 
   @override
-  int? get current => _source[_offset];
+  int get current => _source[_offset];
 
   @override
   bool moveNext() => ++_offset < _end;
@@ -65,15 +68,15 @@ class _ListRangeIteratorImpl implements ListRangeIterator {
   int get position => _offset;
 
   @override
-  void backup([int? by = 1]) {
-    _offset -= by!;
+  void backup([int by = 1]) {
+    _offset -= by;
   }
 
   @override
   int get remaining => _end - _offset - 1;
 
   @override
-  void skip([int? count = 1]) {
-    _offset += count!;
+  void skip([int count = 1]) {
+    _offset += count;
   }
 }

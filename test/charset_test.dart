@@ -39,11 +39,12 @@ void main() {
     text = '상선이 물과 같다';
     List<int> eucKrData = eucKr.encode(text);
     expect(
-        eucKr.name,
-        Charset.detect(
-          eucKrData,
-          orders: [ascii, eucKr, latin1],
-        )?.name);
+      eucKr.name,
+      Charset.detect(
+        eucKrData,
+        orders: [ascii, eucKr, latin1],
+      )?.name,
+    );
 
     text = 'ABC55/';
     List<int> asciiData = ascii.encode(text);
