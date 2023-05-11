@@ -10,6 +10,7 @@ class ListRange extends IterableBase<int> {
   final int _offset;
   final int _length;
 
+  /// ListRange
   ListRange(Iterable<int> source, [int offset = 0, int? length])
       : _source = source,
         _offset = offset,
@@ -44,9 +45,17 @@ abstract class ListRangeIterator implements Iterator<int> {
   bool moveNext();
   @override
   int get current;
+
+  /// cuttent position
   int get position;
+
+  /// backup
   void backup([int by]);
+
+  /// remaining of the iterator
   int get remaining;
+
+  /// skip count
   void skip([int count]);
 }
 

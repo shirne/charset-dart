@@ -6,7 +6,9 @@ import 'constants.dart';
 import 'list_range.dart';
 import 'utils.dart';
 
+/// Utf16 Codec
 class Utf16Codec extends Encoding {
+  /// Utf16 Codec
   const Utf16Codec();
 
   @override
@@ -19,12 +21,15 @@ class Utf16Codec extends Encoding {
   String get name => 'utf-16';
 }
 
+/// Utf16 Encoder
 class Utf16Encoder extends Converter<String, List<int>> {
+  /// Utf16 Encoder
   const Utf16Encoder();
 
   @override
   List<int> convert(String input) => encodeUtf16Be(input, true);
 
+  /// encode utf-16 BE format
   Uint8List encodeUtf16Be(String str, [bool writeBOM = false]) {
     var utf16CodeUnits = codepointsToUtf16CodeUnits(str.codeUnits);
     var encoding = Uint8List(2 * utf16CodeUnits.length + (writeBOM ? 2 : 0));
@@ -40,6 +45,7 @@ class Utf16Encoder extends Converter<String, List<int>> {
     return encoding;
   }
 
+  /// encode utf-16 LE format
   Uint8List encodeUtf16Le(String str, [bool writeBOM = false]) {
     var utf16CodeUnits = codepointsToUtf16CodeUnits(str.codeUnits);
     var encoding = Uint8List(2 * utf16CodeUnits.length + (writeBOM ? 2 : 0));
@@ -56,7 +62,9 @@ class Utf16Encoder extends Converter<String, List<int>> {
   }
 }
 
+/// Utf16Decoder
 class Utf16Decoder extends Converter<List<int>, String> {
+  /// Utf16Decoder
   const Utf16Decoder();
 
   /// Produce a String from a sequence of UTF-16 encoded bytes. This method always
@@ -121,6 +129,7 @@ class Utf16Decoder extends Converter<List<int>, String> {
   }
 }
 
+/// instance of utf16 codec
 const Utf16Codec utf16 = Utf16Codec();
 
 /// Identifies whether a List of bytes starts (based on offset) with a
@@ -152,8 +161,10 @@ bool hasUtf16LeBom(List<int> utf16EncodedBytes, [int offset = 0, int? length]) {
 /// to produce the code unit (0-(2^16)-1). Relies on BOM to determine
 /// endian-ness, and defaults to BE.
 abstract class Utf16BytesToCodeUnitsDecoder implements ListRangeIterator {
-  // TODO(kevmoo): should this field be private?
+  /// TODO(kevmoo): should this field be private?
   final ListRangeIterator utf16EncodedBytesIterator;
+
+  /// replacement of invalid character
   final int? replacementCodepoint;
   late int _current;
 
@@ -162,6 +173,7 @@ abstract class Utf16BytesToCodeUnitsDecoder implements ListRangeIterator {
     this.replacementCodepoint,
   );
 
+  /// create Utf16BytesToCodeUnitsDecoder
   factory Utf16BytesToCodeUnitsDecoder(
     List<int> utf16EncodedBytes, [
     int offset = 0,
@@ -237,12 +249,14 @@ abstract class Utf16BytesToCodeUnitsDecoder implements ListRangeIterator {
     utf16EncodedBytesIterator.skip(2 * count);
   }
 
+  /// decode current character
   int decode();
 }
 
 /// Convert UTF-16BE encoded bytes to utf16 code units by grouping 1-2 bytes
 /// to produce the code unit (0-(2^16)-1).
 class Utf16beBytesToCodeUnitsDecoder extends Utf16BytesToCodeUnitsDecoder {
+  ///Utf16beBytesToCodeUnitsDecoder
   Utf16beBytesToCodeUnitsDecoder(
     List<int> utf16EncodedBytes, [
     int offset = 0,
@@ -270,6 +284,7 @@ class Utf16beBytesToCodeUnitsDecoder extends Utf16BytesToCodeUnitsDecoder {
 /// Convert UTF-16LE encoded bytes to utf16 code units by grouping 1-2 bytes
 /// to produce the code unit (0-(2^16)-1).
 class Utf16leBytesToCodeUnitsDecoder extends Utf16BytesToCodeUnitsDecoder {
+  /// Utf16beBytesToCodeUnitsDecoder
   Utf16leBytesToCodeUnitsDecoder(
     List<int> utf16EncodedBytes, [
     int offset = 0,

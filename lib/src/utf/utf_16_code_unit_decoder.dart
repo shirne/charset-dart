@@ -6,11 +6,14 @@ import 'list_range.dart';
 /// the replacementCharacter to null to throw an ArgumentError
 /// rather than replace the bad value.
 class Utf16CodeUnitDecoder implements Iterator<int> {
-  // TODO(kevmoo): should this field be private?
+  /// TODO(kevmoo): should this field be private?
   final ListRangeIterator utf16CodeUnitIterator;
+
+  /// replacement of invalid charactor
   final int? replacementCodepoint;
   int _current = 0;
 
+  /// Utf16CodeUnitDecoder
   Utf16CodeUnitDecoder(
     Iterable<int> utf16CodeUnits, [
     int offset = 0,
@@ -22,11 +25,13 @@ class Utf16CodeUnitDecoder implements Iterator<int> {
           length,
         ).iterator;
 
+  /// Utf16CodeUnitDecoder from [RangeIterator]
   Utf16CodeUnitDecoder.fromListRangeIterator(
     this.utf16CodeUnitIterator,
     this.replacementCodepoint,
   );
 
+  /// iterator of this
   Iterator<int> get iterator => this;
 
   @override

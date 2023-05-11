@@ -5,8 +5,10 @@ import 'dart:typed_data';
 import 'gbk_encoder_map.dart';
 import 'gbk_decoder_map.dart';
 
-/// The GBK Replacement character `U+E7B3` (). GBK 0xA7F6
+/// The GBK Replacement character `U+E7B3` ().
 const int replacementCharacterUnicode = 0xE7B3;
+
+/// The GBK Replacement character  GBK 0xA7F6
 const int replacementCharacterGBK = 0xA7F6;
 
 /// The Unicode Byte Order Marker (BOM) character `U+FEFF`.
@@ -75,6 +77,7 @@ class GbkCodec extends Encoding {
 /// This class converts strings to their GBK code units (a list of
 /// unsigned 8-bit integers).
 class GbkEncoder extends Converter<String, List<int>> {
+  /// GBK Encoder
   const GbkEncoder();
 
   /// Converts [string] to its GBK code units (a list of

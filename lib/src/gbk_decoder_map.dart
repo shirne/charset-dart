@@ -1,4 +1,5 @@
-//https://ssl.icu-project.org/repos/icu/data/trunk/charset/source/gb18030/gbkuni30.txt
+/// gbk to UTF-16 table
+/// see https://ssl.icu-project.org/repos/icu/data/trunk/charset/source/gb18030/gbkuni30.txt
 Map<int, int> gbkToUtf16Map = {
   41448: 164,
   41452: 167,

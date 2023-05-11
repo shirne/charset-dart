@@ -7,7 +7,9 @@ import 'constants.dart';
 import 'list_range.dart';
 import 'utils.dart';
 
+/// Utf32Codec
 class Utf32Codec extends Encoding {
+  /// Utf32Codec
   const Utf32Codec();
 
   @override
@@ -20,7 +22,9 @@ class Utf32Codec extends Encoding {
   String get name => 'utf-32';
 }
 
+/// Utf32Encoder
 class Utf32Encoder extends Converter<String, List<int>> {
+  /// Utf32Encoder
   const Utf32Encoder();
 
   /// Produce a list of UTF-32 encoded bytes. This method prefixes the resulting
@@ -74,7 +78,9 @@ class Utf32Encoder extends Converter<String, List<int>> {
   }
 }
 
+/// Utf32Decoder
 class Utf32Decoder extends Converter<List<int>, String> {
+  /// Utf32Decoder
   const Utf32Decoder();
 
   @override
@@ -137,6 +143,7 @@ class Utf32Decoder extends Converter<List<int>, String> {
       );
 }
 
+/// The instance of Utf32Codec
 const Utf32Codec utf32 = Utf32Codec();
 
 /// Identifies whether a List of bytes starts (based on offset) with a
@@ -168,6 +175,7 @@ bool hasUtf32leBom(List<int> utf32EncodedBytes, [int offset = 0, int? length]) {
       utf32EncodedBytes[offset + 3] == 0;
 }
 
+/// A Function to create Utf32BytesDecoder
 typedef Utf32BytesDecoderProvider = Utf32BytesDecoder Function();
 
 /// Return type of [decodeUtf32AsIterable] and variants. The Iterable type
@@ -176,6 +184,7 @@ typedef Utf32BytesDecoderProvider = Utf32BytesDecoder Function();
 // TODO(floitsch): Consider removing the extend and switch to implements since
 // that's cheaper to allocate.
 class IterableUtf32Decoder extends IterableBase<int?> {
+  /// codeunitsProvider
   final Utf32BytesDecoderProvider codeunitsProvider;
 
   IterableUtf32Decoder._(this.codeunitsProvider);
@@ -186,8 +195,10 @@ class IterableUtf32Decoder extends IterableBase<int?> {
 
 /// Abstract parent class converts encoded bytes to codepoints.
 abstract class Utf32BytesDecoder implements ListRangeIterator {
-  // TODO(kevmoo): should this field be private?
+  /// TODO(kevmoo): should this field be private?
   final ListRangeIterator utf32EncodedBytesIterator;
+
+  /// replacement of invalid code
   final int? replacementCodepoint;
   late int _current;
 
@@ -196,6 +207,7 @@ abstract class Utf32BytesDecoder implements ListRangeIterator {
     this.replacementCodepoint,
   );
 
+  /// create an Utf32BytesDecoder
   factory Utf32BytesDecoder(
     List<int> utf32EncodedBytes, [
     int offset = 0,
@@ -230,6 +242,7 @@ abstract class Utf32BytesDecoder implements ListRangeIterator {
     }
   }
 
+  /// do Decode
   List<int> decodeRest() => List<int>.generate(remaining, (index) {
         moveNext();
         return current;
@@ -284,12 +297,14 @@ abstract class Utf32BytesDecoder implements ListRangeIterator {
     utf32EncodedBytesIterator.skip(4 * count);
   }
 
+  /// decode
   int decode();
 }
 
 /// Convert UTF-32BE encoded bytes to codepoints by grouping 4 bytes
 /// to produce the unicode codepoint.
 class Utf32beBytesDecoder extends Utf32BytesDecoder {
+  /// Utf32beBytesDecoder
   Utf32beBytesDecoder(
     List<int> utf32EncodedBytes, [
     int offset = 0,
@@ -321,6 +336,7 @@ class Utf32beBytesDecoder extends Utf32BytesDecoder {
 /// Convert UTF-32BE encoded bytes to codepoints by grouping 4 bytes
 /// to produce the unicode codepoint.
 class Utf32leBytesDecoder extends Utf32BytesDecoder {
+  /// Utf32leBytesDecoder
   Utf32leBytesDecoder(
     List<int> utf32EncodedBytes, [
     int offset = 0,

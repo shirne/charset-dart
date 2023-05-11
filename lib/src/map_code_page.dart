@@ -1,9 +1,11 @@
 import 'dart:convert';
 
+/// Mapped PageCodec
 abstract class MappedPageCodec extends Encoding {
   final MappedPageEncoder _encoder;
   final MappedPageDecoder _decoder;
 
+  /// Mapped PageCodec
   const MappedPageCodec(this._encoder, this._decoder) : super();
 
   @override
@@ -13,8 +15,12 @@ abstract class MappedPageCodec extends Encoding {
   MappedPageDecoder get decoder => _decoder;
 }
 
+/// Mapped PageEncoder
 class MappedPageEncoder extends Converter<String, List<int>> {
+  /// coder map
   final Map<int, int> coderMap;
+
+  /// Mapped PageEncoder
   const MappedPageEncoder(this.coderMap);
 
   @override
@@ -37,9 +43,14 @@ class MappedPageEncoder extends Converter<String, List<int>> {
   }
 }
 
+/// Mapped PageDecoder
 class MappedPageDecoder extends Converter<List<int>, String> {
   final bool _allowInvalid;
+
+  /// coder map
   final Map<int, int> coderMap;
+
+  /// Mapped PageDecoder
   const MappedPageDecoder(this.coderMap, [this._allowInvalid = false]);
 
   @override

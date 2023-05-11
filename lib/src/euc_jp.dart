@@ -2,11 +2,16 @@ import 'dart:convert';
 import 'dart:math';
 import 'euc_jp_table.dart';
 
+/// The instance of EUC-JP codec
 const eucJp = EucJPCodec();
 
+/// The EUC-JP Decoder
 class EucJPDecoder extends Converter<List<int>, String> {
   final bool _allowMalformed;
+
+  /// The EUC-JP Decoder constructor
   const EucJPDecoder([this._allowMalformed = false]);
+
   @override
   convert(input) {
     List<int> result = [];
@@ -15,20 +20,20 @@ class EucJPDecoder extends Converter<List<int>, String> {
       final List<int>? codes;
       if (c1 <= 0x7E) {
         // ASCII Compatible
-        codes = EUC_TABLE[c1];
+        codes = eucTable[c1];
       } else if (c1 == 0x8e) {
         // Hiragana
         final c2 = input[++i];
-        codes = EUC_TABLE[(c1 << 8) + c2];
+        codes = eucTable[(c1 << 8) + c2];
       } else if (c1 == 0x8f) {
         // JIS X 0212
         final c2 = input[++i];
         final c3 = input[++i];
-        codes = EUC_TABLE[(c1 << 16) + (c2 << 8) + c3];
+        codes = eucTable[(c1 << 16) + (c2 << 8) + c3];
       } else {
         // JIS X 0208
         final c2 = input[++i];
-        codes = EUC_TABLE[(c1 << 8) + c2];
+        codes = eucTable[(c1 << 8) + c2];
       }
       if (codes == null) {
         if (_allowMalformed) {
@@ -43,8 +48,11 @@ class EucJPDecoder extends Converter<List<int>, String> {
   }
 }
 
+/// The EUC-JP Encoder
 class EucJPEncoder extends Converter<String, List<int>> {
+  /// The EUC-JP Encoder constructor
   const EucJPEncoder();
+
   @override
   List<int> convert(String input) {
     List<int> result = [];
@@ -56,14 +64,17 @@ class EucJPEncoder extends Converter<String, List<int>> {
         value += bytes[i] * (pow(256, (bytes.length - i - 1)) as int);
       }
 
-      result.addAll(UTF_TABLE[value] ?? []);
+      result.addAll(utfTable[value] ?? []);
     }
     return result;
   }
 }
 
+/// The EUC-JP Codec
 class EucJPCodec extends Encoding {
   final bool _allowMalformed;
+
+  /// The EUC-JP Codec
   const EucJPCodec([this._allowMalformed = false]);
 
   @override

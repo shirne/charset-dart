@@ -1,6 +1,5 @@
-// ignore_for_file: constant_identifier_names
-
-const JIS_TABLE = {
+/// UTF to SHIFT-JIS Table
+const utfToShiftJisTable = {
   0x00: [0],
   0x01: [1],
   0x02: [2],
@@ -7156,7 +7155,8 @@ const JIS_TABLE = {
   0xeaa4: [231, 134, 153],
 };
 
-const UTF_TABLE = {
+/// SHIFT-JIS To UTF Table
+const shiftJisToUtfTable = {
   0x00: [0],
   0x01: [1],
   0x02: [2],

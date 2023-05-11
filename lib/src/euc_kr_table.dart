@@ -1,3 +1,4 @@
+/// UTF-8 to EUC table
 const utf8ToEucKr = {
   0x8141: 0xac02,
   0x8142: 0xac03,
@@ -17048,7 +17049,7 @@ const utf8ToEucKr = {
   0xfdfd: 0x7fb2,
   0xfdfe: 0x8a70,
 };
-
+/// EUC-KR to UTF-8 table
 const eucKrToUtf8 = {
   0xa1: 0xa2ae,
   0xa4: 0xa2b4,

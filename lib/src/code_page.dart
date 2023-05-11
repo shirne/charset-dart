@@ -57,43 +57,112 @@ final CodePage latin9 =
 final CodePage latin10 =
     CodePage._bmp("latin-10", "$_ascii$_noControls$_top8859_16");
 
+/// The windows874 codec
 final CodePage windows874 = CodePage._bmp("windows874", "$_ascii$_win874");
 
+/// The windows1250 codec
 final CodePage windows1250 = CodePage._bmp("windows1250", "$_ascii$_win1250");
+
+/// The windows1251 codec
 final CodePage windows1251 = CodePage._bmp("windows1251", "$_ascii$_win1251");
+
+/// The windows1252 codec
 final CodePage windows1252 = CodePage._bmp("windows1252", "$_ascii$_win1252");
+
+/// The windows1253 codec
 final CodePage windows1253 = CodePage._bmp("windows1253", "$_ascii$_win1253");
+
+/// The windows1254 codec
 final CodePage windows1254 = CodePage._bmp("windows1254", "$_ascii$_win1254");
+
+/// The windows1255 codec
 final CodePage windows1255 = CodePage._bmp("windows1255", "$_ascii$_win1255");
+
+/// The windows1256 codec
 final CodePage windows1256 = CodePage._bmp("windows1256", "$_ascii$_win1256");
+
+/// The windows1257 codec
 final CodePage windows1257 = CodePage._bmp("windows1257", "$_ascii$_win1257");
+
+/// The windows1258 codec
 final CodePage windows1258 = CodePage._bmp("windows1258", "$_ascii$_win1258");
 
+/// The cp437 codec
 final CodePage cp437 = CodePage._bmp("cp437", "$_ascii$_cp437");
+
+/// The cp737 codec
 final CodePage cp737 = CodePage._bmp("cp737", "$_ascii$_cp737");
+
+/// The cp775 codec
 final CodePage cp775 = CodePage._bmp("cp775", "$_ascii$_cp775");
+
+/// The cp850 codec
 final CodePage cp850 = CodePage._bmp("cp850", "$_ascii$_cp850");
+
+/// The cp852 codec
 final CodePage cp852 = CodePage._bmp("cp852", "$_ascii$_cp852");
+
+/// The cp855 codec
 final CodePage cp855 = CodePage._bmp("cp855", "$_ascii$_cp855");
+
+/// The cp856 codec
 final CodePage cp856 = CodePage._bmp("cp856", "$_ascii$_cp856");
+
+/// The cp857 codec
 final CodePage cp857 = CodePage._bmp("cp857", "$_ascii$_cp857");
+
+/// The cp858 codec
 final CodePage cp858 = CodePage._bmp("cp858", "$_ascii$_cp858");
+
+/// The cp860 codec
 final CodePage cp860 = CodePage._bmp("cp860", "$_ascii$_cp860");
+
+/// The cp861 codec
 final CodePage cp861 = CodePage._bmp("cp861", "$_ascii$_cp861");
+
+/// The cp862 codec
 final CodePage cp862 = CodePage._bmp("cp862", "$_ascii$_cp862");
+
+/// The cp863 codec
 final CodePage cp863 = CodePage._bmp("cp863", "$_ascii$_cp863");
+
+/// The cp864 codec
 final CodePage cp864 = CodePage._bmp("cp864", "$_ascii$_cp864");
+
+/// The cp865 codec
 final CodePage cp865 = CodePage._bmp("cp865", "$_ascii$_cp865");
+
+/// The cp866 codec
 final CodePage cp866 = CodePage._bmp("cp866", "$_ascii$_cp866");
+
+/// The cp869 codec
 final CodePage cp869 = CodePage._bmp("cp869", "$_ascii$_cp869");
+
+/// The cp922 codec
 final CodePage cp922 = CodePage._bmp("cp922", "$_ascii$_noControls$_cp922");
+
+/// The cp1046 codec
 final CodePage cp1046 = CodePage._bmp("cp1046", "$_ascii$_cp1046");
+
+/// The cp1124 codec
 final CodePage cp1124 = CodePage._bmp("cp1124", "$_ascii$_noControls$_cp1124");
+
+/// The cp1125 codec
 final CodePage cp1125 = CodePage._bmp("cp1125", "$_ascii$_cp1125");
+
+/// The cp1129 codec
 final CodePage cp1129 = CodePage._bmp("cp1129", "$_ascii$_noControls$_cp1129");
+
+/// The cp1133 codec
 final CodePage cp1133 = CodePage._bmp("cp1133", "$_ascii$_noControls$_cp1133");
+
+/// The cp1161 codec
 final CodePage cp1161 = CodePage._bmp("cp1161", "$_ascii$_cp1161");
+
+/// The cp1162 codec
 final CodePage cp1162 = CodePage._bmp("cp1162", "$_ascii$_cp1162");
+
+/// The cp1163 codec
 final CodePage cp1163 = CodePage._bmp("cp1163", "$_ascii$_noControls$_cp1163");
 
 /// Characters in ISO-8859-2 above the ASCII and top control characters.

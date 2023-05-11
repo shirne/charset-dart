@@ -1,6 +1,5 @@
-// ignore_for_file: constant_identifier_names
-
-const EUC_TABLE = {
+/// EUC codecs table
+const eucTable = {
   0x00: [0],
   0x01: [1],
   0x02: [2],
@@ -13139,7 +13138,8 @@ const EUC_TABLE = {
   0x8fede3: [233, 190, 165],
 };
 
-const UTF_TABLE = {
+/// EUC to UTF table
+const utfTable = {
   0x00: [0],
   0x01: [1],
   0x02: [2],

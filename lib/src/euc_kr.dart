@@ -1,11 +1,14 @@
 import 'dart:convert';
 import 'euc_kr_table.dart';
 
+/// The instance of EucKRCodec
 const eucKr = EucKRCodec(true);
 
+/// EUC-KR Codec
 class EucKRCodec extends Encoding {
   final bool _allowInvalid;
 
+  /// EUC-KR Codec
   const EucKRCodec([this._allowInvalid = false]) : super();
 
   @override
@@ -19,7 +22,9 @@ class EucKRCodec extends Encoding {
       _allowInvalid ? const EucKRDecoder(true) : const EucKRDecoder();
 }
 
+/// EUC-KR Encoder
 class EucKREncoder extends Converter<String, List<int>> {
+  /// EUC-KR Encoder
   const EucKREncoder();
 
   @override
@@ -42,8 +47,11 @@ class EucKREncoder extends Converter<String, List<int>> {
   }
 }
 
+/// EUC-KR Decoder
 class EucKRDecoder extends Converter<List<int>, String> {
   final bool _allowInvalid;
+
+  /// EUC-KR Decoder
   const EucKRDecoder([this._allowInvalid = false]);
 
   @override

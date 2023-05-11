@@ -2,8 +2,11 @@ import 'dart:convert';
 import 'dart:math';
 import 'shift_jis_table.dart';
 
+/// ShiftJis Decoder
 class ShiftJISDecoder extends Converter<List<int>, String> {
   final bool _allowMalformed;
+
+  /// ShiftJis Decoder
   const ShiftJISDecoder({bool allowMalformed = false})
       : _allowMalformed = allowMalformed;
   @override
@@ -14,16 +17,16 @@ class ShiftJISDecoder extends Converter<List<int>, String> {
       List<int>? c2;
       if (c1 <= 0x7F) {
         // ASCII Compatible (partially)
-        c2 = JIS_TABLE[c1];
+        c2 = utfToShiftJisTable[c1];
       } else if (c1 >= 0xa1 && c1 <= 0xdf) {
         // Half-width Hiragana
-        c2 = JIS_TABLE[c1];
+        c2 = utfToShiftJisTable[c1];
       } else if (c1 >= 0x81 && c1 <= 0x9f) {
         // JIS X 0208
-        c2 = JIS_TABLE[(c1 << 8) + input[++i]];
+        c2 = utfToShiftJisTable[(c1 << 8) + input[++i]];
       } else if (c1 >= 0xe0 && c1 <= 0xef) {
         // JIS X 0208
-        c2 = JIS_TABLE[(c1 << 8) + input[++i]];
+        c2 = utfToShiftJisTable[(c1 << 8) + input[++i]];
       } else {
         // Unknown
       }
@@ -39,7 +42,9 @@ class ShiftJISDecoder extends Converter<List<int>, String> {
   }
 }
 
+/// ShiftJis Encoder
 class ShiftJISEncoder extends Converter<String, List<int>> {
+  /// ShiftJis Encoder
   const ShiftJISEncoder();
 
   @override
@@ -53,14 +58,17 @@ class ShiftJISEncoder extends Converter<String, List<int>> {
         value += bytes[i] * (pow(256, (bytes.length - i - 1)) as int);
       }
 
-      result.addAll(UTF_TABLE[value] ?? [0xFFFD]);
+      result.addAll(shiftJisToUtfTable[value] ?? [0xFFFD]);
     }
     return result;
   }
 }
 
+/// ShiftJis Codec
 class ShiftJISCodec extends Encoding {
   final bool _allowMalformed;
+
+  /// ShiftJis Codec
   const ShiftJISCodec({bool allowMalformed = false})
       : _allowMalformed = allowMalformed;
 
@@ -76,4 +84,5 @@ class ShiftJISCodec extends Encoding {
   String get name => 'shift-jis';
 }
 
+/// The instance of ShiftJIS Codec
 const shiftJis = ShiftJISCodec();
