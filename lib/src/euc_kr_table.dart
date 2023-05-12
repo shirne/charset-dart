@@ -17049,6 +17049,7 @@ const utf8ToEucKr = {
   0xfdfd: 0x7fb2,
   0xfdfe: 0x8a70,
 };
+
 /// EUC-KR to UTF-8 table
 const eucKrToUtf8 = {
   0xa1: 0xa2ae,
