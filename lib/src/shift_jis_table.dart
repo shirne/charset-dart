@@ -1,5 +1,5 @@
 /// UTF to SHIFT-JIS Table
-const utfToShiftJisTable = {
+const utfToShiftJisTable = <int, List<int>>{
   0x00: [0],
   0x01: [1],
   0x02: [2],
@@ -7156,7 +7156,7 @@ const utfToShiftJisTable = {
 };
 
 /// SHIFT-JIS To UTF Table
-const shiftJisToUtfTable = {
+const shiftJisToUtfTable = <int, List<int>>{
   0x00: [0],
   0x01: [1],
   0x02: [2],

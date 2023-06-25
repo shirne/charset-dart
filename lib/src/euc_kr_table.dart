@@ -1,5 +1,5 @@
 /// UTF-8 to EUC table
-const utf8ToEucKr = {
+const utf8ToEucKr = <int, int>{
   0x8141: 0xac02,
   0x8142: 0xac03,
   0x8143: 0xac05,
@@ -17051,7 +17051,7 @@ const utf8ToEucKr = {
 };
 
 /// EUC-KR to UTF-8 table
-const eucKrToUtf8 = {
+const eucKrToUtf8 = <int, int>{
   0xa1: 0xa2ae,
   0xa4: 0xa2b4,
   0xa7: 0xa1d7,

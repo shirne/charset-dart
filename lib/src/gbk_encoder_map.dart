@@ -1,6 +1,6 @@
 /// UTF-16 to GBK Table
 /// https://ssl.icu-project.org/repos/icu/data/trunk/charset/source/gb18030/gbkuni30.txt
-Map<int, int> utf16ToGBKMap = {
+const utf16ToGBKMap = <int, int>{
   164: 41448,
   167: 41452,
   168: 41383,

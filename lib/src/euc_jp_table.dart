@@ -1,5 +1,5 @@
 /// EUC codecs table
-const eucTable = {
+const eucTable = <int,List<int>>{
   0x00: [0],
   0x01: [1],
   0x02: [2],
@@ -13139,7 +13139,7 @@ const eucTable = {
 };
 
 /// EUC to UTF table
-const utfTable = {
+const utfTable = <int,List<int>>{
   0x00: [0],
   0x01: [1],
   0x02: [2],
