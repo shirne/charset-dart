@@ -1,3 +1,6 @@
+## 2.0.1
+* make map data const to shrink release output size
+
 ## 2.0.0
 * improve utf codec methods to unnullable
 * improve docs
