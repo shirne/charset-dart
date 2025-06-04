@@ -1,7 +1,7 @@
 import 'constants.dart';
 import 'list_range.dart';
 
-/// An Iterator<int> of codepoints built on an Iterator of UTF-16 code units.
+/// An `Iterator<int>` of codepoints built on an Iterator of UTF-16 code units.
 /// The parameters can override the default Unicode replacement character. Set
 /// the replacementCharacter to null to throw an ArgumentError
 /// rather than replace the bad value.
